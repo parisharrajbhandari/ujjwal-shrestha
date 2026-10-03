@@ -12,16 +12,16 @@ const BUSINESS_CONFIG = {
         middleName: "",
         lastName: "Shrestha",
         fullName: "Mr. Ujjwal Shrestha",       // Displayed in header & vCard
-        title: "CEO",              // Job title / designation
+        title: "Chairman",              // Job title / designation
         profilePhoto: "image/profile_photo.jpg",  // Profile photo for card & vCard
     },
 
     // --- Company Details ---
     company: {
-        name: "Euro Green Motors Pvt. Ltd. \n Euro Green Auto Care Pvt. Ltd.",    // Displayed in header & page title
+        name: "Euro Green Motors Pvt. Ltd. \n&  Euro Green Auto Care Pvt. Ltd.",    // Displayed in header & page title
         tagline: "Authorized Dealer of BYD Auto Industry CO. Ltd. for Chitwan",               // Used in the page <title>
         aboutHeading: "About ME",     // Heading for the about section
-        aboutText: `CEO of Euro Green Motors Pvt. Ltd. and Euro Green Auto Care Pvt. Ltd. An Authorized Dealer of BYD Auto Industry CO. Ltd. for Chitwan.`,
+        aboutText: `Chairman of Euro Green Motors Pvt. Ltd. and Euro Green Auto Care Pvt. Ltd. An Authorized Dealer of BYD Auto Industry CO. Ltd. for Chitwan.`,
     },
 
     // --- Contact Details ---
