@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const companyNameEl = document.getElementById('company-name');
     if (companyNameEl) companyNameEl.textContent = cfg.company.name;
 
+
     const companyTaglineEl = document.getElementById('company-tagline');
     if (companyTaglineEl) companyTaglineEl.textContent = cfg.company.tagline;
 

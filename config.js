@@ -18,7 +18,8 @@ const BUSINESS_CONFIG = {
 
     // --- Company Details ---
     company: {
-        name: "Euro Green Motors \n&  Euro Green Auto Care",    // Displayed in header & page title
+        name: "Euro Green Motors",
+        name: "Euro Green Auto Care",    // Displayed in header & page title
         tagline: "Authorized Dealer of BYD Auto Industry CO. Ltd. for Chitwan",               // Used in the page <title>
         aboutHeading: "About ME",     // Heading for the about section
         aboutText: `Chairman of Euro Green Motors Pvt. Ltd. and Euro Green Auto Care Pvt. Ltd. An Authorized Dealer of BYD Auto Industry CO. Ltd. for Chitwan.`,
