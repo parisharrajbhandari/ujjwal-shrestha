@@ -25,7 +25,9 @@ html {
     color: var(--text-color);
     background-color: var(--primary-color);
     overflow-x: hidden;
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    scroll-snap-type: y mandatory;
 }
 
 /* ========================================== */
@@ -37,7 +39,7 @@ html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('image/byd_background.png');
+    background-image: url('image/background_image.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,8 +57,8 @@ html {
     height: 100vh;
     /* Smooth, premium dark gradient for readability */
     background: linear-gradient(180deg,
-            rgba(0, 0, 0, 0.85) 0%,
-            rgba(0, 0, 0, 0.95) 100%);
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.9) 100%);
     z-index: -1;
     backdrop-filter: blur(10px);
     /* Very subtle blur for depth */
@@ -71,26 +73,21 @@ html {
     left: 0;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 100;
     padding-top: 0;
     padding-bottom: 0;
-    transition: top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        padding 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        background 0.4s ease;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: none;
-    will-change: top, padding, background;
 }
 
 .logo {
     width: 220px;
     max-width: 80%;
-    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.4s ease;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-    will-change: width;
 }
 
 /* Scrolled State */
@@ -108,6 +105,45 @@ html {
 .header.scrolled .logo {
     width: 75px;
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+}
+
+.dealer-info {
+    text-align: center;
+    margin-top: 15px;
+    padding: 0 20px;
+    opacity: 1;
+    max-height: 120px;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.business-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.dealer-details {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.header.scrolled .dealer-info {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    padding: 0;
 }
 
 /* ========================================== */
@@ -131,58 +167,64 @@ html {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding-top: 40vh;
+    padding-top: 50vh;
     padding-bottom: 40px;
+    scroll-snap-align: start;
 }
 
-.company-name {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+.profile-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     width: 100%;
-    margin-top: 25px;
-    font-size: 22px;
+}
+
+.profile-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.profile-name {
+    font-size: 18px;
     font-weight: 600;
-    letter-spacing: 2px;
-    text-align: center;
-    text-transform: uppercase;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
 }
 
-.company-name.hidden {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-    pointer-events: none;
-}
-
-.company-tagline {
-    position: absolute;
-    margin-top: 40px;
-    top: calc(100% + 60px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
+.profile-title {
     font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-align: center;
-    color: var(--text-muted);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    opacity: 0.85;
-    transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    font-weight: 400;
+    color: var(--accent-color);
+    margin-bottom: 2px;
 }
 
-.company-tagline.hidden {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-    pointer-events: none;
+.profile-company {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
 }
 
 .scroll-indicator.hidden {
@@ -199,10 +241,8 @@ html {
     padding: 0 20px;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(20px);
-    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .contacts-section.visible {
@@ -276,75 +316,10 @@ html {
 /* ========================================== */
 .card-content {
     min-height: 100vh;
-    padding: 80px 25px 100px;
+    padding: 100px 25px 100px;
     display: flex;
     flex-direction: column;
-}
-
-/* ========================================== */
-/* PROFILE CARD                               */
-/* ========================================== */
-.profile-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
-    padding: 20px 22px;
-    margin-bottom: 28px;
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.541);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-}
-
-.profile-photo-wrapper {
-    flex-shrink: 0;
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.profile-name {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--text-color);
-    line-height: 1.2;
-}
-
-.profile-title {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--accent-color);
-    letter-spacing: 0.5px;
-    text-transform: capitalize;
-}
-
-.profile-company {
-    font-size: 12px;
-    font-weight: 300;
-    color: var(--text-muted);
-    letter-spacing: 0.3px;
-    margin-top: 2px;
-    opacity: 0.85;
+    scroll-snap-align: start;
 }
 
 /* ========================================== */
@@ -361,7 +336,7 @@ html {
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.164);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
@@ -400,7 +375,7 @@ html {
     gap: 12px;
     padding: 22px 15px;
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.164);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
